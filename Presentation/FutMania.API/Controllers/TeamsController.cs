@@ -13,10 +13,11 @@ namespace FutMania.API.Controllers
         {
             _teamService = teamService;
         }
+        [HttpGet]
         public IActionResult GetTeams()
         {
             var teams = _teamService.GetTeams();
-            return Ok(teams );
+            return Ok(teams);
         }
     }
 }
