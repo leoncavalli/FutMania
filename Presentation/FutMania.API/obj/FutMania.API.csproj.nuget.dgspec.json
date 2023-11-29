@@ -114,6 +114,63 @@
         }
       }
     },
+    "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj",
+        "projectName": "FutMania.Persistance",
+        "projectPath": "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj",
+        "packagesPath": "/Users/bunyamin/.nuget/packages/",
+        "outputPath": "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/bunyamin/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj": {
+                "projectPath": "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "/Users/bunyamin/Desktop/FutMania/Presentation/FutMania.API/FutMania.API.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -138,6 +195,9 @@
             "projectReferences": {
               "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj": {
                 "projectPath": "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj"
+              },
+              "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj": {
+                "projectPath": "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj"
               }
             }
           }

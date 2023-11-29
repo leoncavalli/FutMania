@@ -130,6 +130,19 @@
         "runtime": {
           "bin/placeholder/FutMania.Domain.dll": {}
         }
+      },
+      "FutMania.Persistance/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "dependencies": {
+          "FutMania.Application": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/FutMania.Persistance.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/FutMania.Persistance.dll": {}
+        }
       }
     }
   },
@@ -484,11 +497,17 @@
       "type": "project",
       "path": "../../Core/FutMania.Domain/FutMania.Domain.csproj",
       "msbuildProject": "../../Core/FutMania.Domain/FutMania.Domain.csproj"
+    },
+    "FutMania.Persistance/1.0.0": {
+      "type": "project",
+      "path": "../../Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj",
+      "msbuildProject": "../../Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
       "FutMania.Application >= 1.0.0",
+      "FutMania.Persistance >= 1.0.0",
       "Microsoft.AspNetCore.OpenApi >= 8.0.0",
       "Swashbuckle.AspNetCore >= 6.4.0"
     ]
@@ -520,6 +539,9 @@
           "projectReferences": {
             "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj": {
               "projectPath": "/Users/bunyamin/Desktop/FutMania/Core/FutMania.Application/FutMania.Application.csproj"
+            },
+            "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj": {
+              "projectPath": "/Users/bunyamin/Desktop/FutMania/Infrastructure/FutMania.Persistance/FutMania.Persistance.csproj"
             }
           }
         }
