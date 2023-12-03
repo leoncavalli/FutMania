@@ -1,17 +1,15 @@
 using FutMania.Application.Interfaces;
-using FutMania.Persistance.Services;
+using FutMania.Persistance.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddScoped<ITeamService,TeamService>();
-
-// Add services to the container.
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
+builder.Services.AddDbContext<FutManiaDbContext>(options => options.UseNpgsql(connectionString));
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 var app = builder.Build();
 
-//  Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
