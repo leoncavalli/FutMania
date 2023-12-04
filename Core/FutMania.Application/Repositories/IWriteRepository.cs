@@ -10,8 +10,9 @@ namespace FutMania.Application.Repositories
     {
         Task<bool> AddAsync(TEntity entity);
         Task<bool> AddRangeAsync(List<TEntity> entity);
-        Task<bool> Remove(TEntity entity);
-        Task<bool> Remove(string id);
-        Task<bool> UpdateAsync(TEntity entity);
+        bool Remove(TEntity entity);
+        Task<bool> RemoveAsync(string id);
+        bool Update(TEntity entity);
+        Task<int> SaveAsync();
     }
 }

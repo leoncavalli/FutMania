@@ -1,4 +1,5 @@
-using FutMania.Application.Interfaces;
+using FutMania.Application.Repositories;
+using FutMania.Persistance.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutMania.API.Controllers
@@ -7,17 +8,23 @@ namespace FutMania.API.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
-        private readonly ITeamService _teamService;
+        private readonly IPlayerReadRepository _playerReadRepository;
+        private readonly IPlayerWriteRepository _playerWriteRepository;
 
-        public TeamsController(ITeamService teamService)
+
+        public TeamsController(IPlayerReadRepository playerReadRepository,IPlayerWriteRepository playerWriteRepository)
         {
-            _teamService = teamService;
+            _playerReadRepository = playerReadRepository;
+            _playerWriteRepository = playerWriteRepository;
         }
         [HttpGet]
-        public IActionResult GetTeams()
+        public async Task<IActionResult> Get()
         {
-            var teams = _teamService.GetTeams();
-            return Ok(teams);
+            await _playerWriteRepository.AddRangeAsync(new(){
+                new(){Id=Guid.NewGuid(),Name="Edin",LastName="Dzeko",Info="",CreatedAt=DateTime.UtcNow}
+            });
+            await _playerWriteRepository.SaveAsync();
+            return Ok();
         }
     }
 }

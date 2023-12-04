@@ -6,6 +6,7 @@ using FutMania.Application.Repositories;
 using FutMania.Domain.Entities.Common;
 using FutMania.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace FutMania.Persistance.Repositories
 {
@@ -20,29 +21,36 @@ namespace FutMania.Persistance.Repositories
 
         public DbSet<TEntity> Table => _context.Set<TEntity>();
 
-        public Task<bool> AddAsync(TEntity entity)
+        public async Task<bool> AddAsync(TEntity entity)
         {
-            throw new NotImplementedException();
+            EntityEntry<TEntity> entityEntry = await Table.AddAsync(entity);
+            return entityEntry.State == EntityState.Added;
         }
 
-        public Task<bool> AddRangeAsync(List<TEntity> entity)
+        public async Task<bool> AddRangeAsync(List<TEntity> entities)
         {
-            throw new NotImplementedException();
+            await Table.AddRangeAsync(entities);
+            return true;
         }
 
-        public Task<bool> Remove(TEntity entity)
+        public bool Remove(TEntity entity)
         {
-            throw new NotImplementedException();
+            EntityEntry<TEntity> entityEntry =Table.Remove(entity);
+            return entityEntry.State == EntityState.Deleted;
         }
 
-        public Task<bool> Remove(string id)
+        public async Task<bool> RemoveAsync(string id)
         {
-            throw new NotImplementedException();
+            TEntity entity = await Table.FirstOrDefaultAsync(x=>x.Id==Guid.Parse(id));
+            return Remove(entity);
         }
 
-        public Task<bool> UpdateAsync(TEntity entity)
+        public bool Update(TEntity entity)
         {
-            throw new NotImplementedException();
+            EntityEntry entityEntry = Table.Update(entity);
+            return entityEntry.State == EntityState.Modified;
         }
+
+        public async Task<int> SaveAsync() => await _context.SaveChangesAsync();
     }
 }
