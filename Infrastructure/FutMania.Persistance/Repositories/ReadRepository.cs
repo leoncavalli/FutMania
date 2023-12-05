@@ -26,7 +26,7 @@ namespace FutMania.Persistance.Repositories
         public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> method)
                 => await Table.FirstOrDefaultAsync(method);
         public async Task<TEntity> GetByIdAsync(string id)
-            => await Table.FirstOrDefaultAsync(x => x.Id == Guid.Parse(id));
+            => await Table.FindAsync(id);
 
     }
 }
