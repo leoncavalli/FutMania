@@ -19,14 +19,39 @@ namespace FutMania.Persistance.Repositories
         }
         public DbSet<TEntity> Table => _context.Set<TEntity>();
 
-        public IQueryable<TEntity> GetAll() => Table;
+        public IQueryable<TEntity> GetAll(bool tracking=true) 
+        {
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query.AsNoTracking();
+            return query;
+        }
 
-        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> method)
-            => Table.Where(method);
-        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> method)
-                => await Table.FirstOrDefaultAsync(method);
-        public async Task<TEntity> GetByIdAsync(string id)
-            => await Table.FindAsync(id);
+        public IQueryable<TEntity> GetWhere(Expression<Func<TEntity, bool>> method,bool tracking=true)
+        {   
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query.AsNoTracking();
+
+            return query.Where(method);
+        }
+        public async Task<TEntity> GetSingleAsync(Expression<Func<TEntity, bool>> method,bool tracking=true)
+        {
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(method);
+        }
+        public async Task<TEntity> GetByIdAsync(string id,bool tracking=true)
+        {
+            var query = Table.AsQueryable();
+            if(!tracking)
+                query.AsNoTracking();
+
+            return await query.FirstOrDefaultAsync(x => x.Id ==Guid.Parse(id)); 
+        
+        }
 
     }
 }
