@@ -22,7 +22,7 @@ namespace FutMania.API.Controllers
         public async Task<IActionResult> AddPlayer()
         {
             await _playerWriteRepository.AddRangeAsync(new(){
-                new(){Id=Guid.NewGuid(),Name="Edin",LastName="Dzeko",Info="",CreatedAt=DateTime.UtcNow}
+                new(){Id=Guid.NewGuid(),Name="Edin",LastName="Dzeko",Info=""}
             });
             await _playerWriteRepository.SaveAsync();
             return Ok();
