@@ -1,6 +1,5 @@
-using FutMania.Application.Repositories;
+using FutMania.Application;
 using FutMania.Domain.Entities;
-using FutMania.Persistance.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutMania.API.Controllers
@@ -9,36 +8,29 @@ namespace FutMania.API.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        private readonly IPlayerReadRepository _playerReadRepository;
-        private readonly IPlayerWriteRepository _playerWriteRepository;
-
-
-        public PlayerController(IPlayerReadRepository playerReadRepository,IPlayerWriteRepository playerWriteRepository)
+        private readonly IPlayerService _playerService;
+        public PlayerController(IPlayerService playerService)
         {
-            _playerReadRepository = playerReadRepository;
-            _playerWriteRepository = playerWriteRepository;
+            _playerService = playerService;
         }
         [HttpPost]
-        public async Task<IActionResult> AddPlayer()
+        public async Task<IActionResult> AddPlayer(Player player)
         {
-            await _playerWriteRepository.AddRangeAsync(new(){
-                new(){Id=Guid.NewGuid(),Name="Edin",LastName="Dzeko",Info=""}
-            });
-            await _playerWriteRepository.SaveAsync();
+            await _playerService.AddPlayer(player);
             return Ok();
         }
         [HttpGet]
         public IActionResult GetPlayers()
         {
-            var players = _playerReadRepository.GetAll(); 
+            var players = _playerService.GetPlayers();
             return Ok(players);
         }
 
         [HttpGet("{id}")]
 
-        public IActionResult GetPlayer(string id)
+        public async Task<IActionResult> GetPlayer(string id)
         {
-            var player = _playerReadRepository.GetByIdAsync(id); 
+            var player = await _playerService.GetPlayer(id);
             return Ok(player);
         }
     }

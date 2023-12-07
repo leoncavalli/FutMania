@@ -2,6 +2,7 @@ using FutMania.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
 using FutMania.Persistance.Repositories;
 using FutMania.Application.Repositories;
+using FutMania.Application;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
@@ -15,6 +16,7 @@ builder.Services.AddScoped<ISeasonReadRepository,SeasonReadRepository>();
 builder.Services.AddScoped<ISeasonWriteRepository,SeasonWriteRepository>();
 builder.Services.AddScoped<ILeagueReadRepository,LeagueReadRepository>();
 builder.Services.AddScoped<ILeagueWriteRepository,LeagueWriteRepository>();
+builder.Services.AddScoped<IPlayerService,PlayerService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
