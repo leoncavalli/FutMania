@@ -13,13 +13,13 @@ namespace FutMania.API.Controllers
         {
             _mediator = mediator;
         }
-        // [HttpPost]
-        // public async Task<IActionResult> AddPlayer(Player player)
-        // {
-        //     await _playerService.AddPlayer(player);
-        //     return Ok();
-        // }
-        // 
+        [HttpPost]
+        public async Task<IActionResult> AddPlayer(AddPlayerCommandRequest request)
+        {
+            var response = await _mediator.Send(request);
+            return Ok(response);
+        }
+        
         [HttpGet]
         public IActionResult GetPlayers()
         {
