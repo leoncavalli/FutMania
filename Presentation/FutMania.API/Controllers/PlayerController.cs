@@ -1,5 +1,5 @@
 using FutMania.Application;
-using FutMania.Domain.Entities;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutMania.API.Controllers
@@ -8,30 +8,25 @@ namespace FutMania.API.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-        private readonly IPlayerService _playerService;
-        public PlayerController(IPlayerService playerService)
+        private readonly IMediator _mediator;
+        public PlayerController(IMediator mediator)
         {
-            _playerService = playerService;
+            _mediator = mediator;
         }
-        [HttpPost]
-        public async Task<IActionResult> AddPlayer(Player player)
-        {
-            await _playerService.AddPlayer(player);
-            return Ok();
-        }
+        // [HttpPost]
+        // public async Task<IActionResult> AddPlayer(Player player)
+        // {
+        //     await _playerService.AddPlayer(player);
+        //     return Ok();
+        // }
+        // 
         [HttpGet]
         public IActionResult GetPlayers()
         {
-            var players = _playerService.GetPlayers();
+            var players = _mediator.Send(new GetAllPlayersQueryRequest());
             return Ok(players);
         }
 
-        [HttpGet("{id}")]
 
-        public async Task<IActionResult> GetPlayer(string id)
-        {
-            var player = await _playerService.GetPlayer(id);
-            return Ok(player);
-        }
-    }
+   }
 }
