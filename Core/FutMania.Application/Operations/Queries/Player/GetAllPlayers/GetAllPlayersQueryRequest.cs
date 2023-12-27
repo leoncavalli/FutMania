@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FutMania.Application;
+namespace FutMania.Application.Operations.Queries.GetAllPlayers;
 
 public class GetAllPlayersQueryRequest : IRequest<GetAllPlayersQueryResponse>
 {

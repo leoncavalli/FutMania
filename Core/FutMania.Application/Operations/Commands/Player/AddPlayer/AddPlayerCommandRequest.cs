@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace FutMania.Application;
+namespace FutMania.Application.Operations.Commands.AddPlayer;
 
 public class AddPlayerCommandRequest : IRequest<AddPlayerCommandResponse>
 {

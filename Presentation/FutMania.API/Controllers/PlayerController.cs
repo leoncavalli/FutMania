@@ -1,4 +1,8 @@
-using FutMania.Application;
+using FutMania.Application.Operations.Commands.AddPlayer;
+using FutMania.Application.Operations.Commands.DeletePlayer;
+using FutMania.Application.Operations.Queries.GetAllPlayers;
+using FutMania.Application.Operations.Queries.GetPlayerById;
+
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -25,6 +29,20 @@ namespace FutMania.API.Controllers
         {
             var players = _mediator.Send(new GetAllPlayersQueryRequest());
             return Ok(players);
+        }
+        
+        [HttpGet("{Id}")]
+        public async Task<IActionResult> GetPlayer([FromRoute] GetPlayerByIdRequest getPlayerByIdRequest)
+        {
+            var player = await _mediator.Send(getPlayerByIdRequest);
+            return Ok(player);
+        }
+
+        [HttpDelete("{Id}")]
+        public async Task<IActionResult> DeletePlayer([FromRoute]  DeletePlayerCommandRequest deletePlayerCommandRequest)
+        {
+            await _mediator.Send(deletePlayerCommandRequest);
+            return Ok();
         }
 
 

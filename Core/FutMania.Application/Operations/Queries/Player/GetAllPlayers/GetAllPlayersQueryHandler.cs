@@ -1,7 +1,7 @@
 ﻿using FutMania.Application.Repositories;
 using MediatR;
 
-namespace FutMania.Application;
+namespace FutMania.Application.Operations.Queries.GetAllPlayers;
 
 public class GetAllPlayersQueryHandler : IRequestHandler<GetAllPlayersQueryRequest, GetAllPlayersQueryResponse>
 {
@@ -13,7 +13,6 @@ public class GetAllPlayersQueryHandler : IRequestHandler<GetAllPlayersQueryReque
     public async Task<GetAllPlayersQueryResponse> Handle(GetAllPlayersQueryRequest request, CancellationToken cancellationToken)
     {
         var players = _playerReadRepository.GetAll(false);
-        var playersObj =  _playerReadRepository.GetAll().Select(x=>new{}).ToList();
         var totalCount =  players.Count();
         return new()
         {

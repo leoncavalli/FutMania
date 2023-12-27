@@ -1,4 +1,4 @@
-﻿namespace FutMania.Application;
+﻿namespace FutMania.Application.Operations.Commands.AddPlayer;
 
 public class AddPlayerCommandResponse
 {

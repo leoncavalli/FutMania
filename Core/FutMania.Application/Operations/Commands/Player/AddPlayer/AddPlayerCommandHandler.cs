@@ -2,7 +2,7 @@
 using FutMania.Domain.Entities;
 using MediatR;
 
-namespace FutMania.Application;
+namespace FutMania.Application.Operations.Commands.AddPlayer;
 
 public class AddPlayerCommandHandler : IRequestHandler<AddPlayerCommandRequest, AddPlayerCommandResponse>
 {
