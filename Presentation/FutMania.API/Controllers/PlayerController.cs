@@ -47,7 +47,7 @@ namespace FutMania.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdatePlayer([FromRoute]  UpdatePlayerCommandRequest updatePlayerCommandRequest)
+        public async Task<IActionResult> UpdatePlayer([FromBody] UpdatePlayerCommandRequest updatePlayerCommandRequest)
         {
             await _mediator.Send(updatePlayerCommandRequest);
             return Ok();
