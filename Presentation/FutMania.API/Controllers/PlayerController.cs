@@ -1,5 +1,6 @@
 using FutMania.Application.Operations.Commands.AddPlayer;
 using FutMania.Application.Operations.Commands.DeletePlayer;
+using FutMania.Application.Operations.Commands.UpdatePlayer;
 using FutMania.Application.Operations.Queries.GetAllPlayers;
 using FutMania.Application.Operations.Queries.GetPlayerById;
 
@@ -44,6 +45,14 @@ namespace FutMania.API.Controllers
             await _mediator.Send(deletePlayerCommandRequest);
             return Ok();
         }
+
+        [HttpPut]
+        public async Task<IActionResult> UpdatePlayer([FromRoute]  UpdatePlayerCommandRequest updatePlayerCommandRequest)
+        {
+            await _mediator.Send(updatePlayerCommandRequest);
+            return Ok();
+        }
+
 
 
    }
