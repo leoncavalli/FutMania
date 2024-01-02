@@ -8,7 +8,6 @@ public static class ServiceRegistration
 {
     public static void AddPersistenceServices(this IServiceCollection collection)
     {
-
         collection.AddScoped<ITeamReadRepository, TeamReadRepository>();
         collection.AddScoped<ITeamWriteRepository, TeamWriteRepository>();
         collection.AddScoped<IPlayerReadRepository, PlayerReadRepository>();

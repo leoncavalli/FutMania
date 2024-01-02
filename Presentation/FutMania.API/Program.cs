@@ -2,10 +2,13 @@ using FutMania.Persistance.Contexts;
 using Microsoft.EntityFrameworkCore;
 using FutMania.Persistance;
 using FutMania.Application;
+using FutMania.Domain;
 var builder = WebApplication.CreateBuilder(args);
 
 var connectionString = builder.Configuration.GetConnectionString("PostgreSQL");
 builder.Services.AddDbContext<FutManiaDbContext>(options => options.UseNpgsql(connectionString));
+builder.Services.AddIdentityApiEndpoints<AppUser>().AddEntityFrameworkStores<FutManiaDbContext>();
+
 builder.Services.AddApplicationServices();
 
 builder.Services.AddPersistenceServices();

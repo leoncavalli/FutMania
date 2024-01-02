@@ -1,10 +1,12 @@
+using FutMania.Domain;
 using FutMania.Domain.Entities;
 using FutMania.Domain.Entities.Common;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace FutMania.Persistance.Contexts
 {
-    public class FutManiaDbContext : DbContext
+    public class FutManiaDbContext : IdentityDbContext<AppUser>
     {
         public FutManiaDbContext(DbContextOptions options) : base(options)
         { }
