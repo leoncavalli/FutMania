@@ -1,4 +1,5 @@
 ﻿using FutMania.Application.Operations.Commands.AddUser;
+using FutMania.Application.Operations.Commands.LoginUser;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,12 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateUser(AddUserCommandRequest addUserCommandRequest){
         var response = await _mediator.Send(addUserCommandRequest);
+        return Ok(response);
+    }
+    [HttpPost("[action]")]
+    public async Task<IActionResult> Login(LoginUserCommandRequest loginUserCommandRequest)
+    {
+        LoginUserCommandResponse response = await _mediator.Send(loginUserCommandRequest); 
         return Ok(response);
     }
 }
