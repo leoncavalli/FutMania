@@ -1,5 +1,4 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
@@ -7,16 +6,15 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <UserSecretsId>89527dc1-a917-4e12-a22d-b4ae26d42158</UserSecretsId>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Core\FutMania.Application\FutMania.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\FutMania.Persistance\FutMania.Persistance.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\FutMania.Infrastructure\FutMania.Infrastructure.csproj" />
   </ItemGroup>
-
 </Project>

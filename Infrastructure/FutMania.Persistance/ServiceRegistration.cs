@@ -1,4 +1,5 @@
-﻿using FutMania.Application.Repositories;
+﻿using FutMania.Application.Interfaces;
+using FutMania.Application.Repositories;
 using FutMania.Persistance.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
