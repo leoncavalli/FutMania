@@ -1,3 +1,4 @@
+using System.Net;
 using FutMania.Application.Operations.Commands.AddPlayer;
 using FutMania.Application.Operations.Commands.DeletePlayer;
 using FutMania.Application.Operations.Commands.UpdatePlayer;
@@ -5,12 +6,15 @@ using FutMania.Application.Operations.Queries.GetAllPlayers;
 using FutMania.Application.Operations.Queries.GetPlayerById;
 
 using MediatR;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FutMania.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes="Admin")]
     public class PlayerController : ControllerBase
     {
         private readonly IMediator _mediator;
